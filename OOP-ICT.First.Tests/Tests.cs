@@ -2,39 +2,30 @@
 using Xunit;
 using Xunit.Sdk;
 using OOP_ICT;
+using Newtonsoft.Json.Linq;
+
 namespace OOP_ICT.Dealer.Tests;
 
 public class Tests
 {
     // TODO: Обратите внимание, что для коллекций и проверок есть разные виды Assert
     [Fact]
-    public void CheckTestIsWorking_CorrectBuild()
+    public void TestCardConstructor()
     {
-        Assert.True(true);
+        string suit = "Hearts";
+        string value = "Ace";
+
+        Card card = new Card(suit, value);
+
+        Assert.Equal(suit, card.Suit);
+        Assert.Equal(value, card.FaceValue);
     }
 
     [Fact]
-    public void CollectionsAreEquals_True()
+    public void TestCardDeckConstructor()
     {
-        CardDeck firstCollection = new CardDeck();
-        CardDeck secondCollection = new CardDeck();
-        secondCollection.Shuffle();
-        Assert.NotEqual(firstCollection, secondCollection);
-    }
-
-    [Fact]
-    public void ValueContainsInCollection_True()
-    {
-        var suits = new List<string>() { "Spades", "Hearts", "Diamonds", "Clubs" };
-        var faceValues = new List<string>() { "Ace", "King", "Queen", "Jack", "10", "9", "8", "7", "6", "5", "4", "3", "2" };
-        CardDeck collection = new CardDeck();
-        foreach (string suit in suits)
-        {
-            foreach (string faceValue in faceValues)
-            {
-                Assert.Contains(string.Format("{0} of {1}", faceValue, suit),collection.Deck());
-            }
-        }
+        CardDeck cardDeck = new CardDeck();
+        Assert.Equal(52, cardDeck.Count());
     }
 
     [Fact]

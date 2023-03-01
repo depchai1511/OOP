@@ -35,13 +35,8 @@ public class CardDeck
         deck.RemoveAt(0);
         return card;
     }
-    public List<string> Deck() {
-        List<string> cards = new List<string>();
-        foreach (Card card in deck)
-        {
-            cards.Add(card.Display());
-        }
-        return cards;
+    public int Count() {
+        return deck.Count;
 
     }
 
