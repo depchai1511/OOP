@@ -5,7 +5,10 @@ namespace OOP_ICT;
 public class Dealer 
 {
     CardDeck DealerDeck = new CardDeck();
-    
+    public int CountCard()
+    {
+        return DealerDeck.Count();
+    }
     public void Shuffle()
     {
         DealerDeck.Shuffle();

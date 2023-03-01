@@ -24,4 +24,9 @@ public class UserDeck
             Console.WriteLine(card.Display());
         }
     }
+
+    public int Count()
+    {
+        return cards.Count;
+    }
 }

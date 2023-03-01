@@ -4,8 +4,6 @@ using Xunit.Sdk;
 using OOP_ICT;
 using Newtonsoft.Json.Linq;
 
-namespace OOP_ICT.Dealer.Tests;
-
 public class Tests
 {
     // TODO: Обратите внимание, что для коллекций и проверок есть разные виды Assert
@@ -28,10 +26,38 @@ public class Tests
         Assert.Equal(52, cardDeck.Count());
     }
 
+
     [Fact]
-    public void CheckForNullException_AssertNullRef()
+    public void TestCardDeckShuffle()
     {
-        var collection = new List<string>() { "я", "люблю", "ооп" };
-        Assert.Throws<InvalidOperationException>(() => collection.First(x => x == null));
+
+        CardDeck cardDeck = new CardDeck();
+        CardDeck originalDeck = new CardDeck();
+
+        cardDeck.Shuffle();
+        Assert.NotEqual(originalDeck, cardDeck);
+
+    }
+
+    [Fact]
+    public void TestDealerCreateShuffledUserDeck()
+    {
+        Dealer dealer = new Dealer();
+
+        UserDeck userdeck = dealer.CreateShuffledUserDeck(13);
+
+        
+        Assert.Equal(52-13, dealer.CountCard());
+    }
+
+    [Fact]
+    public void TestUserDeckAddCard()
+    {
+
+        UserDeck userDeck = new UserDeck();
+        Card card = new Card("Clubs","King");
+
+        userDeck.AddCard(card);
+        Assert.Equal(1, userDeck.Count());
     }
 }
